@@ -52,7 +52,7 @@ body {
     animation: bounce 2.5s infinite;
 }
 
-  /*End Scroll to Top*/
+/* End Scroll to Top */
 
 /* Header Styles */
 header {
@@ -77,17 +77,14 @@ header {
 
 .logo {
     max-width: 150px;
-    animation: moveDown 2s ease-in-out infinite;
+    animation: moveFromTop 2s ease-in-out forwards;
 }
 
-@keyframes moveDown {
-    0% {
-        transform: translateY(0);
+@keyframes moveFromTop {
+    from {
+        transform: translateY(-800px);
     }
-    50% {
-        transform: translateY(10px);
-    }
-    100% {
+    to {
         transform: translateY(0);
     }
 }
@@ -1180,3 +1177,14 @@ h2.animate {
     }
 }
 
+/* About Founder page */
+
+/* End About Founder page */
+
+/* KZN Page */
+
+/* End KZN Page */
+
+/* East London page */
+
+/* End East London page */

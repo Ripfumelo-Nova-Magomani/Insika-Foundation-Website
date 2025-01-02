@@ -199,3 +199,43 @@ document.querySelectorAll('.horizontal-square').forEach(square => {
 });
 
 /* End horizontal functionality */
+
+/* Gauteng page */
+
+/* End Gauteng page */
+
+/* East London page */
+document.addEventListener('DOMContentLoaded', () => {
+  // Intersection Observer for animations
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.style.animationDelay = entry.target.dataset.delay || '0s';
+              entry.target.style.animationPlayState = 'running';
+              observer.unobserve(entry.target);
+          }
+      });
+  }, {
+      threshold: 0.1
+  });
+
+  // Observe all animated elements
+  document.querySelectorAll('.fade-in, .slide-in, .slide-in-right, .zoom-in, .float-in').forEach((element, index) => {
+      element.style.animationPlayState = 'paused';
+      element.dataset.delay = `${index * 0.2}s`;
+      observer.observe(element);
+  });
+
+  // Service items stagger animation
+  const serviceItems = document.querySelectorAll('.service-group li');
+  serviceItems.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(-20px)';
+      setTimeout(() => {
+          item.style.transition = 'all 0.3s ease';
+          item.style.opacity = '1';
+          item.style.transform = 'translateX(0)';
+      }, 500 + index * 100);
+  });
+});
+/* End East London page */
