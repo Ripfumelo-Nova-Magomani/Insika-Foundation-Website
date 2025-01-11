@@ -13,7 +13,7 @@ body {
 
 /* Scroll-to-top button */
 #scroll-to-top {
-    display: block; /* Always visible */
+    display: none; /* Initially hidden */
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -26,7 +26,8 @@ body {
     line-height: 50px;
     font-size: 35px;
     cursor: pointer;
-    transition: opacity 0.3s;
+    z-index: 9999; /* Ensures it stays on top of all elements */
+    transition: background-color 0.3s, color 0.3s, opacity 0.3s;
 }
 
 /* Bounce animation */
@@ -42,14 +43,14 @@ body {
     }
 }
 
-#scroll-to-top:hover {
-    opacity: 0.7;
-}
-
-/* Apply bounce animation to the arrow */
 #scroll-to-top span {
     display: inline-block;
     animation: bounce 2.5s infinite;
+}
+
+/* Hover effect */
+#scroll-to-top:hover {
+    opacity: 0.7;
 }
 
 /* End Scroll to Top */
@@ -119,7 +120,7 @@ nav ul li a:hover {
 .donate-btn {
     background-color: transparent;
     color: #df8207;
-    border: 2px solid #df8207;
+    border: 2px solid #dbdad8;
     padding: 0.5rem 1.5rem;
     border-radius: 51px;
     cursor: pointer;
@@ -300,110 +301,104 @@ nav ul li a:hover {
     border-radius: 8px;
 }
 
-/* Announcements Section Styles */
-#announcements {
-    padding: 2rem;
+.announcements {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .announcements h1 {
     text-align: center;
-}
-
-.announcement-cards {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+  
+  .cards-container {
     display: flex;
-    justify-content: space-around;
-    margin-top: 2rem;
-}
-
-.announcement-card {
-    background-color: #ebd5b1;
-    padding: 1rem;
-    border-radius: 8px;
-    width: 45%;
-}
-
-.announcement-content {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-}
-
-.name-tag {
-    display: flex;
-    align-items: flex-end;
-    margin-top: 1rem;
-}
-
-.vertical-square {
-    width: 10%;
-    height: 75px;
-    background-color: #201f1f;
-    border-radius: 4px;
-}
-
-.horizontal-square {
-    background-color: #201f1f;
-    color: white;
-    padding: 0.9rem;
-    border-radius: 4px;
-    margin-left: -0.3rem;
-    width: 145%;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .announcements-card {
+    background-color: #f5e6d3;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 300px;
     position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-/* Add this class to hide the original text */
-.horizontal-square span {
-    visibility: hidden;
-}
-
-/* Create typewriter effect container */
-.horizontal-square::before {
-    content: attr(data-text);
-    visibility: visible;
+  }
+  
+  .card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .appointment-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  
+  .position {
+    color: #f0a500;
+    font-size: 1.2rem;
+    margin: 0;
+    min-height: 60px;
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .info-container {
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 10px;
+    position: relative;
+  }
+  
+  .name {
+    color: white;
+    margin: 0;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  
+  .hover-content {
     position: absolute;
-    top: 50%;
-    left: 0.9rem;
-    transform: translateY(-50%);
-    width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid white;
-    animation: typing 3s steps(40) forwards,
-             blink 0.8s infinite;
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: calc(100% - 1.8rem) }
-}
-
-@keyframes blink {
-    50% { border-color: transparent }
-}
-
-/* Pop animation for announcement images */
-.announcement-content img {
-    animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    padding: 15px;
+    box-sizing: border-box;
     opacity: 0;
-    transform: scale(0.5);
-}
-
-@keyframes popIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    70% {
-        transform: scale(1.1);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    margin-bottom: 10px;
+  }
+  
+  .hover-content p {
+    color: white;
+    margin: 5px 0;
+    text-align: center;
+  }
+  
+  .info-container:hover .hover-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
 /* Videos Section */
 #videos {
-    background-color: #e87e04; /* Orange background */
+    background-color: #df8207; /* Orange background */
     text-align: center;
     padding: 5rem 1rem;
     position: relative;
@@ -936,7 +931,7 @@ h2 {
     bottom: -15px;
     height: 2px;
     width: 50px;
-    background: #ff5e14;
+    background: #df8207;
 }
 
 .footer-widget ul {
@@ -956,7 +951,7 @@ h2 {
 }
 
 .footer-widget ul li a:hover {
-    color: #ff5e14;
+    color: #df8207;
 }
 
 .donate-btn {
@@ -987,7 +982,7 @@ h2 {
 .contact-heading .line {
     flex: 1;
     height: 2px;
-    background-color: #e67817;
+    background-color: #df8207;
     margin: 0 10px;
 }
 
@@ -1009,7 +1004,7 @@ h2 {
 .contact-icons .icon i {
     font-size: 16px;
     color: #202020;
-    background-color: #e67817;
+    background-color: #df8207;
     border-radius: 50%;
     width: 35px; /* Fixed width */
     height: 35px; /* Equal height to maintain circle */
@@ -1094,7 +1089,7 @@ h2 {
 }
 
 .footer-menu li a:hover {
-    color: #ff5e14;
+    color: #df8207;
 }
 
 @media (max-width: 768px) {
@@ -1177,14 +1172,4 @@ h2.animate {
     }
 }
 
-/* About Founder page */
 
-/* End About Founder page */
-
-/* KZN Page */
-
-/* End KZN Page */
-
-/* East London page */
-
-/* End East London page */

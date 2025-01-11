@@ -1,30 +1,41 @@
 /* Up button*/
 document.addEventListener("DOMContentLoaded", function () {
-    // Get the "UP" link element
     var scrollToTopBtn = document.getElementById("scroll-to-top");
-  
-    // Add a click event listener to the link
-    scrollToTopBtn.addEventListener("click", function (event) {
-      event.preventDefault();
-  
-      // Scroll to the top of the page with smooth behavior
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-  
-    // Show/hide the "UP" link based on the scroll position
+
+    // Show/hide the "UP" link based on scroll position
     window.addEventListener("scroll", function () {
-      // Show the "UP" link when scrolling down, hide it when at the top
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        scrollToTopBtn.style.display = "block";
-      } else {
-        scrollToTopBtn.style.display = "none";
-      }
+        var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+        // Toggle visibility based on scroll position
+        if (scrollPosition > 20) {
+            scrollToTopBtn.style.display = "block";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+
+        // Change colors when near footer
+        var footer = document.querySelector("footer");
+        if (footer) {
+            var footerTop = footer.offsetTop;
+            if (scrollPosition + window.innerHeight >= footerTop) {
+                scrollToTopBtn.style.backgroundColor = "black";
+                scrollToTopBtn.style.color = "#df8207";
+            } else {
+                scrollToTopBtn.style.backgroundColor = "#df8207";
+                scrollToTopBtn.style.color = "#000000";
+            }
+        }
     });
-  });
-  
+
+    // Smooth scroll to the top
+    scrollToTopBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    });
+});
     /*End Up Scroll*/
 
 //Navigation Functionality
@@ -239,3 +250,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 /* End East London page */
+
+//staff finder functionality//
+  
+//End staff finder functionality//
+
+// Gallery Functionality //
+
+// End Gallery Functionality //
+
+//vacancies functionality//
+
+//End vacancies functionality//
