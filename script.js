@@ -40,16 +40,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Navigation Functionality
 document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const nav = document.querySelector('nav');
     const dropdowns = document.querySelectorAll('.dropdown');
 
-    dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('mouseenter', function() {
-            this.querySelector('.dropdown-content').style.display = 'block';
-        });
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
 
-        dropdown.addEventListener('mouseleave', function() {
-            this.querySelector('.dropdown-content').style.display = 'none';
+    // Handle mobile menu interactions
+    if (window.innerWidth <= 768) {
+        dropdowns.forEach(dropdown => {
+            // Keep hover functionality for dropdowns
+            dropdown.addEventListener('mouseenter', function() {
+                this.querySelector('.dropdown-content').style.display = 'block';
+            });
+
+            dropdown.addEventListener('mouseleave', function() {
+                this.querySelector('.dropdown-content').style.display = 'none';
+            });
+
+            // Handle nested dropdowns
+            const nestedDropdowns = dropdown.querySelectorAll('.nested-dropdown');
+            nestedDropdowns.forEach(nested => {
+                nested.addEventListener('mouseenter', function() {
+                    this.querySelector('.nested-dropdown-content').style.display = 'block';
+                });
+
+                nested.addEventListener('mouseleave', function() {
+                    this.querySelector('.nested-dropdown-content').style.display = 'none';
+                });
+            });
         });
+    }
+
+    // Reset menu state on window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+        }
     });
 });
 
@@ -168,7 +199,9 @@ function moveSlider() {
 
 // Initialize slider
 cloneSlides();
-setInterval(moveSlider, 8000); // Slower interval for the slider
+setInterval(moveSlider, 10000); // Slower interval for the slider
+
+/* End of Partners Slider */
 
 /* h2 Functionality */
 document.addEventListener('DOMContentLoaded', function() {
@@ -211,10 +244,6 @@ document.querySelectorAll('.horizontal-square').forEach(square => {
 
 /* End horizontal functionality */
 
-/* Gauteng page */
-
-/* End Gauteng page */
-
 /* East London page */
 document.addEventListener('DOMContentLoaded', () => {
   // Intersection Observer for animations
@@ -250,15 +279,3 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 /* End East London page */
-
-//staff finder functionality//
-  
-//End staff finder functionality//
-
-// Gallery Functionality //
-
-// End Gallery Functionality //
-
-//vacancies functionality//
-
-//End vacancies functionality//

@@ -3,184 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insika Foundation - Partners</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Prospective Supplier Application Form - Insika Foundation</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../img/insika_foundation_logo1.png" type="image/x-icon">
     <style>
-        :root {
-            --primary: #df8207;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #df8207;
+            --dark: #000000;
+            --light: #ffffff;
+            --gray: #f5f5f5;
         }
 
         body {
-            background: #fff;
-            color: #000;
-            overflow-x: hidden;
+            background-color: var(--gray);
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
-        .hero {
-            height: 45vh;
-            background: linear-gradient(135deg, rgba(223, 130, 7, 0.9), rgba(0, 0, 0, 0.9));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        .header {
+            background: linear-gradient(135deg, #000000, #df8207, #000000);
             color: white;
-            position: relative;
+            padding: 2rem 1rem;
+            text-align: center;
         }
 
-        .hero-content {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
+        .header h1 {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            position: relative;
         }
 
-        .hero h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--primary);
-            animation: lineWidth 1s ease forwards 1s;
+        .breadcrumb-inner {
+            margin-top: 20px;
+            text-align: center;
         }
 
         .breadcrumb {
             display: inline-flex;
             list-style: none;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            margin-top: 20px;
+            padding: 0;
+            margin: 0;
+            background-color: transparent;
+            border-radius: 51px;
+            border: 1px solid rgba(26, 26, 26, 0.5);
         }
 
         .breadcrumb li {
+            padding: 5px 10px;
             color: white;
-            padding: 0 10px;
         }
 
         .breadcrumb li a {
-            color: var(--primary);
+            color: #000000;
             text-decoration: none;
+        }
+
+        .breadcrumb li a:hover {
+            color: #fff;
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: ">";
+            margin-left: 10px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .breadcrumb li.active {
+            font-weight: bold;
         }
 
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 6rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .hero {
+            background: linear-gradient(45deg, var(--dark), var(--primary));
+            color: var(--light);
             padding: 4rem 2rem;
-        }
-
-        .intro-text {
             text-align: center;
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 0.5s;
-        }
-
-        .partner-card {
-            display: flex;
-            align-items: center;
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateX(-50px);
-            animation: slideInRight 1s ease forwards;
-        }
-
-        .partner-card:nth-child(even) {
-            flex-direction: row-reverse;
-            transform: translateX(50px);
-        }
-
-        .partner-image {
-            flex: 1;
-            padding: 2rem;
-        }
-
-        .partner-image img {
-            width: 100%;
-            max-width: 400px;
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(223, 130, 7, 0.2);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .contact-card {
+            background: var(--gray);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
             transition: transform 0.3s ease;
         }
 
-        .partner-image img:hover {
-            transform: scale(1.05);
+        .contact-card:hover {
+            transform: translateY(-5px);
         }
 
-        .partner-content {
-            flex: 2;
-            padding: 2rem;
+        .contact-info {
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .partner-content h2 {
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .email-btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+
+        .Icon {
+            font-size: 3rem;
             color: var(--primary);
             margin-bottom: 1rem;
-            font-size: 2rem;
         }
 
-        .slideshow-container {
-            overflow: hidden;
-            white-space: nowrap;
-            margin-top: 4rem;
-            background: #ffffff;
-            padding: 2rem 0;
-            border: 2px solid #df8207;
+        .delivery-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--gray);
         }
 
-        .slideshow {
-            display: inline-block;
-            animation: slide 20s linear infinite;
+        .delivery-info h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
 
-        .slideshow img {
-            height: 100px;
-            margin: 0 2rem;
-            vertical-align: middle;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
             }
-        }
 
-        @keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
+            .hero {
+                padding: 2rem 1rem;
+            }
 
-        @keyframes lineWidth {
-            to { width: 200px; }
-        }
+            .hero h1 {
+                font-size: 2rem;
+            }
 
-        @keyframes slide {
-            from { transform: translateX(0); }
-            to { transform: translateX(-100%); }
+            .contact-section {
+                padding: 1.5rem;
+            }
+
+            .email-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -264,74 +269,42 @@
     </div>
 </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Our Partners</h1>
-            <ul class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li>Partners</li>
-            </ul>
-        </div>
-    </section>
-
-    <div class="container">
-        <div class="intro-text">
-            <h2>Working Together for Change</h2>
-            <p>Insika Foundation has various partners both locally and internationally across a range of different projects and project objectives.</p>
-        </div>
-
-        <div class="partner-card" data-animation="slideInRight 1s ease forwards">
-            <div class="partner-image">
-                <img src="../img/zte.jpeg" alt="ZTE Corporation">
-            </div>
-            <div class="partner-content">
-                <h2>ZTE Corporation</h2>
-                <p>Insika Foundation in partnership with ZTE Corporation championed a project supplying telecommunication equipment such as computers, tablets, projectors and routers for the training and development of rural communities. ZTE Corporation is based in China and is a global leader in telecommunications and information.</p>
-            </div>
-        </div>
-
-        <div class="partner-card">
-            <div class="partner-image">
-                <img src="../img/Capture.png" alt="Teach in China">
-            </div>
-            <div class="partner-content">
-                <h2>Teach in China</h2>
-                <p>Insika Foundation has worked in partnership with the Chinese Culture and International Exchange Centre on the "Teach in China" initiative. The initiative was launched as a programme between South Africa and China recruiting English teachers for universities, high schools, primary schools and pre-schools in China. The programme also focuses on the cultural exchange between South Africa and China.</p>
-            </div>
-        </div>
-
-        <div class="partner-card">
-            <div class="partner-image">
-                <img src="../img/insika_foundation_logo1.png" alt="Third World Large Foundation">
-            </div>
-            <div class="partner-content">
-                <h2>Third World Large Foundation</h2>
-                <p>The Third World Large Foundation focuses on promoting social development and human rights progress through international cooperation. Key themes include:</p>
-                <ul>
-                    <li>Responsibility in promoting social development</li>
-                    <li>Innovation in foundation practices</li>
-                    <li>International cooperation among foundations</li>
-                </ul>
-            </div>
+    <div class="header">
+        <h1>Prospective Supplier Application Form</h1>
+        <div class="breadcrumb-inner">
+            <ol class="breadcrumb">
+                <li><a href="../index.html">Home</a></li>
+                <li class="active">Prospective Supplier Application</li>
+            </ol>
         </div>
     </div>
 
-    <h1 style="text-align: center; margin: 2rem 0; color: var(--primary);">Our Global Impact</h1>
-    
-    <div class="slideshow-container">
-        <div class="slideshow">
-            <img src="../img/uif.jpg" alt="Partner 1">
-            <img src="../img/labour.jpg" alt="Partner 2">
-            <img src="../img/home_affairs.jpg" alt="Partner 3">
-            <img src="../img/cwp.png" alt="Partner 4">
-            <img src="../img/social_development.png" alt="Partner 5">
-            <!-- Duplicate for seamless loop -->
-            <img src="../img/Skyco.png" alt="Partner 1">
-            <img src="../img/joburg.png" alt="Partner 2">
-            <img src="../img/garden court.png" alt="Partner 3">
-            <img src="../img/durban.jpg" alt="Partner 4">
-            <img src="../img/nkandla.jpg" alt="Partner 5">
-        </div>
+    <div class="container">
+        <section class="hero">
+            <h1>Prospective Supplier Application</h1>
+            <p>Submit your application to become a supplier</p>
+        </section>
+
+        <section class="contact-section">
+            <div class="contact-card">
+                <div class="Icon">📧</div>
+                <h2>Submit Your Application</h2>
+                
+                <div class="contact-info">
+                    <p>Please submit your completed application form and required documents through one of the following methods:</p>
+                    
+                    <a href="mailto:scm@insikafoundation.co.za" class="email-btn" id="emailBtn">
+                        <span>📧</span>
+                        <span>scm@insikafoundation.co.za</span>
+                    </a>
+                </div>
+
+                <div class="delivery-info">
+                    <h3>Hand Delivery Option</h3>
+                    <p>You can also hand deliver your documents to our respective office during business hours.</p>
+                </div>
+            </div>
+        </section>
     </div>
 
     <footer class="footer-section">
@@ -418,21 +391,36 @@
     </footer>
 
     <script>
-        const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animation = entry.target.dataset.animation;
-            observer.unobserve(entry.target); // Stop observing once animation is applied
-        }
-    });
-}, { threshold: 0.1 });
+        // Email button animation
+        const emailBtn = document.getElementById('emailBtn');
+        emailBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        emailBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
 
-document.querySelectorAll('.partner-card').forEach((card, index) => {
-    card.dataset.animation = `slideInRight 1s ease forwards ${index * 0.3}s`;
-    observer.observe(card);
-});
+        // Add active state to nav links on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(window.pageYOffset >= sectionTop - 60) {
+                    navLinks.forEach(link => {
+                        if(link.getAttribute('href') === '#' + section.getAttribute('id')) {
+                            link.style.color = '#df8207';
+                        } else {
+                            link.style.color = '#ffffff';
+                        }
+                    });
+                }
+            });
+        });
 
-//Navigation Functionality
+        //Navigation Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger-menu');
     const nav = document.querySelector('nav');
@@ -478,6 +466,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
     </script>
-
 </body>
 </html>

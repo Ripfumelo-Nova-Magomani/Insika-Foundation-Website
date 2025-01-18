@@ -333,15 +333,15 @@
                 <li class="dropdown">
                     <a href="#procurement">PROCUREMENT</a>
                     <ul class="dropdown-content">
-                        <li><a href="#getting-started">Getting Started</a></li>
-                        <li><a href="#cwp-procurement">CWP - Procurement Process</a></li>
-                        <li><a href="#technical-support">Technical Support Form</a></li>
-                        <li><a href="#supplier-application">Prospective Supplier Application form</a></li>
-                        <li><a href="#compliance-checklist">Supplier Compliance Checklist</a></li>
-                        <li><a href="#site-addresses">Current Site Addresses</a></li>
-                        <li><a href="#sbd-6-1">SBD 6.1</a></li>
-                        <li><a href="#sbd-6-2">SBD 6.2</a></li>
-                        <li><a href="#sworn-affidavit">Sworn Affidavit Form BBBEE Exempted Micro Enterprise</a></li>
+                        <li><a href="get_started.html">Getting Started</a></li>
+                        <li><a href="CWP_procurement.html">CWP - Procurement Process</a></li>
+                        <li><a href="tech_support.html">Technical Support Form</a></li>
+                        <li><a href="PSA-form.html">Prospective Supplier Application form</a></li>
+                        <li><a href="compliance-checklist.html">Supplier Compliance Checklist</a></li>
+                        <li><a href="site-addresses">Current Site Addresses</a></li>
+                        <li><a href="sbd-6.1.html">SBD 6.1</a></li>
+                        <li><a href="sbd-6.2.html">SBD 6.2</a></li>
+                        <li><a href="sworn-affidavit.html">Sworn Affidavit Form BBBEE Exempted Micro Enterprise</a></li>
                     </ul>
                 </li>
                 <li><a href="gallery.html">GALLERY</a></li>
@@ -360,14 +360,19 @@
         <a href="donate.html">
             <button class="donate-btn">Donate Now</button>
         </a>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </header>
 
     <div class="header">
         <h1>Corporate Social Investment</h1>
         <div class="breadcrumb-inner">
             <ol class="breadcrumb">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="donate.html">Our Campaigns</a></li>
+                <li><a href="../index.html"><strong>Home</strong></a></li>
+                <li><a href="donate.html"><strong>Our Campaigns</strong></a></li>
                 <li class="active">Corporate Social Investment</li>
             </ol>
         </div>
@@ -559,7 +564,9 @@
                             <li><a href="#">Contacts</a></li>
                             <li><a href="#">Training</a></li>
                         </ul>
-                        <button class="donate-btn">Donate Now</button>
+                        <a href="donate.html">
+                            <button class="donate-btn" type="button">Donate Now</button>
+                        </a>
                     </div>
                     <div class="footer-widget">
                         <div class="footer-widget-heading">
@@ -631,6 +638,53 @@
         document.querySelectorAll('.content-section').forEach(section => {
             observer.observe(section);
         });
+
+        //Navigation Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const nav = document.querySelector('nav');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
+
+    // Handle mobile menu interactions
+    if (window.innerWidth <= 768) {
+        dropdowns.forEach(dropdown => {
+            // Keep hover functionality for dropdowns
+            dropdown.addEventListener('mouseenter', function() {
+                this.querySelector('.dropdown-content').style.display = 'block';
+            });
+
+            dropdown.addEventListener('mouseleave', function() {
+                this.querySelector('.dropdown-content').style.display = 'none';
+            });
+
+            // Handle nested dropdowns
+            const nestedDropdowns = dropdown.querySelectorAll('.nested-dropdown');
+            nestedDropdowns.forEach(nested => {
+                nested.addEventListener('mouseenter', function() {
+                    this.querySelector('.nested-dropdown-content').style.display = 'block';
+                });
+
+                nested.addEventListener('mouseleave', function() {
+                    this.querySelector('.nested-dropdown-content').style.display = 'none';
+                });
+            });
+        });
+    }
+
+    // Reset menu state on window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+        }
+    });
+});
     </script>
+
 </body>
 </html>
