@@ -255,9 +255,9 @@
                 <li class="dropdown">
                     <a href="#procurement">PROCUREMENT</a>
                     <ul class="dropdown-content">
-                        <li><a href="#getting-started">Getting Started</a></li>
-                        <li><a href="#cwp-procurement">CWP - Procurement Process</a></li>
-                        <li><a href="#technical-support">Technical Support Form</a></li>
+                        <li><a href="get_started.html">Getting Started</a></li>
+                        <li><a href="CWP_procurement.html">CWP - Procurement Process</a></li>
+                        <li><a href="tech_support.html">Technical Support Form</a></li>
                         <li><a href="#supplier-application">Prospective Supplier Application form</a></li>
                         <li><a href="#compliance-checklist">Supplier Compliance Checklist</a></li>
                         <li><a href="#site-addresses">Current Site Addresses</a></li>
@@ -282,6 +282,11 @@
         <a href="donate.html">
             <button class="donate-btn">Donate Now</button>
         </a>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </header>
 
     <div class="hero">
@@ -299,15 +304,15 @@
         <div class="content">
             <div class="bio">
                 <h2>About Gabsie</h2>
-                <img src="../img/CEO.jpg" alt="Ziphozethu Busisiwe Mathenjwa" class="founder-image">
-                <p>Insika Foundation was started by Ziphozethu Busisiwe Mathenjwa, affectionately known as 'Gabsie' 
+                <img style="margin-left: 6rem;" src="../img/CEO.jpg" alt="Ziphozethu Busisiwe Mathenjwa" class="founder-image">
+                <p>Insika Foundation was started by <strong>Ziphozethu Busisiwe Mathenjwa</strong>, affectionately known as <strong>'Gabsie'</strong> 
                     to partners, beneficiaries, participants, employers and staff who work with the Insika Foundation. 
                     Gabsie started as a water scientist and evolved into an all rounded business person with a love and 
                     empathy for South African communities and a desire to connect business, government, and the community 
                     through social projects designed to provide skills that yield maximum impact to create sustainable 
                     livelihoods.</p>
                 <br>
-                <p>Gabsie grew up in the small town of Eshowe and observed social challenges on the side of both
+                <p><strong>Gabsie</strong> grew up in the small town of Eshowe and observed social challenges on the side of both
                      her paternal (Emanyiseni) and maternal (Mbongolwane) grandmothers' homesteads.
                      This ignited in Gabsie a desire to assist in the upliftment of her community, 
                      motivating her to become an agent of change.</p>
@@ -446,6 +451,52 @@
                 this.style.transform = 'translateX(0)';
             });
         });
+
+        //Navigation Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const nav = document.querySelector('nav');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
+
+    // Handle mobile menu interactions
+    if (window.innerWidth <= 768) {
+        dropdowns.forEach(dropdown => {
+            // Keep hover functionality for dropdowns
+            dropdown.addEventListener('mouseenter', function() {
+                this.querySelector('.dropdown-content').style.display = 'block';
+            });
+
+            dropdown.addEventListener('mouseleave', function() {
+                this.querySelector('.dropdown-content').style.display = 'none';
+            });
+
+            // Handle nested dropdowns
+            const nestedDropdowns = dropdown.querySelectorAll('.nested-dropdown');
+            nestedDropdowns.forEach(nested => {
+                nested.addEventListener('mouseenter', function() {
+                    this.querySelector('.nested-dropdown-content').style.display = 'block';
+                });
+
+                nested.addEventListener('mouseleave', function() {
+                    this.querySelector('.nested-dropdown-content').style.display = 'none';
+                });
+            });
+        });
+    }
+
+    // Reset menu state on window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+        }
+    });
+});
     </script>
 </body>
 </html>

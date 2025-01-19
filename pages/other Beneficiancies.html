@@ -160,10 +160,10 @@
             <li class="dropdown">
                 <a href="#procurement">PROCUREMENT</a>
                 <ul class="dropdown-content">
-                    <li><a href="#getting-started">Getting Started</a></li>
-                    <li><a href="#cwp-procurement">CWP - Procurement Process</a></li>
-                    <li><a href="#technical-support">Technical Support Form</a></li>
-                    <li><a href="#supplier-application">Prospective Supplier Application form</a></li>
+                    <li><a href="get_started.html">Getting Started</a></li>
+                    <li><a href="CWP_procurement.html">CWP - Procurement Process</a></li>
+                    <li><a href="tech_support.html">Technical Support Form</a></li>
+                    <li><a href="PSA-form.html">Prospective Supplier Application form</a></li>
                     <li><a href="#compliance-checklist">Supplier Compliance Checklist</a></li>
                     <li><a href="#site-addresses">Current Site Addresses</a></li>
                     <li><a href="#sbd-6-1">SBD 6.1</a></li>
@@ -181,12 +181,17 @@
                     <li><a href="westerncapeoffice.html">Western Cape Office</a></li>
                 </ul>
             </li>
-            <li><a href="#trainig">TRAINING</a></li>
+            <li><a href="#training">TRAINING</a></li> <!-- Fixed typo from "trainig" to "training" -->
         </ul>
     </nav>
     <a href="donate.html">
         <button class="donate-btn">Donate Now</button>
     </a>
+    <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
 </header>
 
     <div class="header">
@@ -238,12 +243,12 @@
                             <h3>Quick Links</h3>
                         </div>
                         <ul>
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="founder.html">About Us</a></li>
                             <li><a href="#">Programmes</a></li>
-                            <li><a href="#">Partners</a></li>
+                            <li><a href="partners.html">Partners</a></li>
                             <li><a href="#">Procurement</a></li>
-                            <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Vacancies</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="vacancies.html">Vacancies</a></li>
                             <li><a href="#">Contacts</a></li>
                             <li><a href="#">Training</a></li>
                         </ul>
@@ -283,7 +288,7 @@
                     </div>
                     <div class="footer-menu">
                         <ul>
-                            <li><a href="#">Home</a></li>
+                            <li><a href="../index.html">Home</a></li>
                             <li><a href="#">Terms</a></li>
                             <li><a href="#">Privacy</a></li>
                             <li><a href="#">Policy</a></li>
@@ -296,15 +301,6 @@
     </footer>
 
     <script>
-        // Add smooth scrolling for navigation
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const section = document.querySelector(this.getAttribute('href'));
-                section.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
         // Add fade-in animation for testimonial
         const testimonial = document.querySelector('.testimonial');
         const observer = new IntersectionObserver(entries => {
@@ -320,6 +316,52 @@
         testimonial.style.transform = 'translateY(20px)';
         testimonial.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(testimonial);
+
+        //Navigation Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const nav = document.querySelector('nav');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
+
+    // Handle mobile menu interactions
+    if (window.innerWidth <= 768) {
+        dropdowns.forEach(dropdown => {
+            // Keep hover functionality for dropdowns
+            dropdown.addEventListener('mouseenter', function() {
+                this.querySelector('.dropdown-content').style.display = 'block';
+            });
+
+            dropdown.addEventListener('mouseleave', function() {
+                this.querySelector('.dropdown-content').style.display = 'none';
+            });
+
+            // Handle nested dropdowns
+            const nestedDropdowns = dropdown.querySelectorAll('.nested-dropdown');
+            nestedDropdowns.forEach(nested => {
+                nested.addEventListener('mouseenter', function() {
+                    this.querySelector('.nested-dropdown-content').style.display = 'block';
+                });
+
+                nested.addEventListener('mouseleave', function() {
+                    this.querySelector('.nested-dropdown-content').style.display = 'none';
+                });
+            });
+        });
+    }
+
+    // Reset menu state on window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+        }
+    });
+});
     </script>
 </body>
 </html>

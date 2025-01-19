@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Supplier Development</title>
+    <title>Prospective Supplier Application Form - Insika Foundation</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../img/insika_foundation_logo1.png" type="image/x-icon">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         :root {
             --primary: #df8207;
             --dark: #000000;
@@ -15,15 +22,10 @@
             --gray: #f5f5f5;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
         body {
+            background-color: var(--gray);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
         .header {
@@ -77,124 +79,118 @@
             font-weight: bold;
         }
 
-        .give-btn {
-            background-color: var(--primary);
-            color: var(--light);
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .main {
+        .container {
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 6rem auto 2rem;
             padding: 0 1rem;
         }
 
-        .title {
-            color: var(--primary);
+        .hero {
+            background: linear-gradient(45deg, var(--dark), var(--primary));
+            color: var(--light);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 10px;
             margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
             font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
-        .content {
-            margin-bottom: 2rem;
+        .contact-section {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .list-title {
-            color: var(--dark);
-            margin: 1.5rem 0 0.5rem 0;
-            font-size: 1.2rem;
+        .contact-card {
+            background: var(--gray);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
-        .list-title ul {
-            list-style-type: none;
-            margin-left: 1.5rem;
+        .contact-card:hover {
+            transform: translateY(-5px);
         }
 
-        .list-title ul li::before {
-            content: "•";
-            color: var(--primary);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
-
-        .Social-share {
-            display: flex;
-            gap: 1rem;
+        .contact-info {
             margin: 2rem 0;
-            justify-content: center;
-        }
-
-        .Social-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 50%;
             display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .email-btn {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            color: black;
-            cursor: pointer;
-            transition: transform 0.3s;
+            gap: 0.5rem;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
         }
 
-        .Social-icon:hover {
-            transform: rotate(360deg);
+        .email-btn:hover {
+            background-color: transparent;
+            color: var(--primary);
         }
 
-        .comment-form {
+        .Icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .delivery-info {
             margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--gray);
         }
 
-        .form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    margin-top: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-        .required::after {
-            content: "*";
-            color: red;
+        .delivery-info h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
-
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; /* Adjust spacing between checkbox and label */
-}
-
-.checkbox-group input[type="checkbox"] {
-    width: auto; /* Ensure the checkbox does not take 100% width */
-    margin: 0; /* Remove any extra margins around the checkbox */
-}
 
         @media (max-width: 768px) {
-            .nav {
+            nav ul {
                 flex-direction: column;
                 gap: 1rem;
             }
-            
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-section {
+                padding: 1.5rem;
+            }
+
+            .email-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-     <!--Scroll button-->
+    <!--Scroll button-->
 <a id="scroll-to-top" href="#top" title="Go to top">
     <span>&#x2191;</span>
 </a>
@@ -274,87 +270,42 @@
 </header>
 
     <div class="header">
-        <h1>Enterprise Supplier Development</h1>
+        <h1>Prospective Supplier Application Form</h1>
         <div class="breadcrumb-inner">
             <ol class="breadcrumb">
-                <li><a href="../index.html"><strong>Home</strong></a></li>
-                <li><a href="donate.html"><strong>Our Campaigns</strong></a></li>
-                <li class="active">Enterprise Supplier Development</li>
+                <li><a href="../index.html">Home</a></li>
+                <li class="active">Prospective Supplier Application</li>
             </ol>
         </div>
     </div>
 
-    <main class="main">
-        <h1 class="title">Cell C- Enterprise Supplier Development (ESD) Initiative</h1>
-        
-        <div class="content">
-            <p>Insika Foundation in partnership with Cell C conducted nationwide workshops in all nine provinces in South Africa in support of Enterprise Supplier Development (ESD).</p>
-            
-            <h3 class="list-title">Main objectives of the workshops:</h3>
-            <ul>
-                <li>Improving BBBEE ratings</li>
-                <li>Improving SMME performance overall</li>
-                <li>Reducing costs</li>
-                <li>Resolving quality issues</li>
-                <li>Identifying and developing new business streams</li>
-                <li>Improving business alignment between the beneficiary and the sponsoring organisation</li>
-                <li>Developing a product or service that is not easily accessible in the market</li>
-                <li>Generating competition for a high price</li>
-            </ul>
+    <div class="container">
+        <section class="hero">
+            <h1>Prospective Supplier Application</h1>
+            <p>Submit your application to become a supplier</p>
+        </section>
 
-            <h3 class="list-title">Beneficiary selection included:</h3>
-            <ul>
-                <li>Small, Medium and Micro enterprises</li>
-                <li>Informal sectors</li>
-                <li>Rural entrepreneurs</li>
-                <li>Townships</li>
-                <li>Women</li>
-                <li>Historically Disadvantaged Individuals (HDIs)</li>
-                <li>People Living with Disabilities</li>
-            </ul>
-        </div>
+        <section class="contact-section">
+            <div class="contact-card">
+                <div class="Icon">📧</div>
+                <h2>Submit Your Application</h2>
+                
+                <div class="contact-info">
+                    <p>Please submit your completed application form and required documents through one of the following methods:</p>
+                    
+                    <a href="mailto:scm@insikafoundation.co.za" class="email-btn" id="emailBtn">
+                        <span>📧</span>
+                        <span>scm@insikafoundation.co.za</span>
+                    </a>
+                </div>
 
-        <div class="Social-share">
-            <h3>Social Share:</h3>
-            <div class="Social-icon"><i class="fab fa-facebook-f"></i></div>
-            <div class="Social-icon"> <i class="fab fa-x-twitter"></i></div>
-            <div class="Social-icon"><i class="fab fa-instagram"></i></div>
-        </div>
-
-        <div class="comment-form">
-            <h3>Leave a Comment</h3>
-            <p>Your email address will not be published.</p>
-            
-            <form>
-                <div class="form-group">
-                    <label class="required">Name</label>
-                    <input type="text" required>
+                <div class="delivery-info">
+                    <h3>Hand Delivery Option</h3>
+                    <p>You can also hand deliver your documents to our respective office during business hours.</p>
                 </div>
-                
-                <div class="form-group">
-                    <label class="required">Email</label>
-                    <input type="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Website</label>
-                    <input type="url">
-                </div>
-                
-                <div class="form-group">
-                    <label>Comment</label>
-                    <textarea rows="4"></textarea>
-                </div>
-                
-                <div class="checkbox-group">
-                    <input type="checkbox" id="save-info">
-                    <label for="save-info">Save my name, email, and website in this browser for the next time I comment.</label>
-                </div>
-                
-                <button type="send" class="give-btn" style="margin-top: 1rem;">Submit Comment</button>
-            </form>
-        </div>
-    </main>
+            </div>
+        </section>
+    </div>
 
     <footer class="footer-section">
         <div class="container">
@@ -438,26 +389,44 @@
     </footer>
 
     <script>
-        // Add smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        // Form validation
-        const form = document.querySelector('form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Add your form submission logic here
-            alert('Comment submitted successfully!');
-            form.reset();
+        // Email button animation
+        const emailBtn = document.getElementById('emailBtn');
+        emailBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
         });
-    </script>
-    <script>
+        emailBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+
+        // Add active state to nav links on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(window.pageYOffset >= sectionTop - 60) {
+                    navLinks.forEach(link => {
+                        if(link.getAttribute('href') === '#' + section.getAttribute('id')) {
+                            link.style.color = '#df8207';
+                        } else {
+                            link.style.color = '#ffffff';
+                        }
+                    });
+                }
+            });
+        });
+
         //Navigation Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger-menu');
