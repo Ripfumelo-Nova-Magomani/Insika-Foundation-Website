@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insika Foundation Training Academy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #df8207;
+            --dark: #000000;
+            --light: #ffffff;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: var(--dark);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--dark);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../img/');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light);
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Animated Button */
+        .btn {
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(223,130,7,0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 5rem 2rem;
+            background: var(--dark);
+            color: var(--light);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .course-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .course-card:hover {
+            background: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: var(--primary);
+            color: var(--light);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">Insika Foundation</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li class="dropdown">
+                    <a href="#courses">Training Courses</a>
+                    <div class="dropdown-content">
+                        <a href="#">Understanding the NQF</a>
+                        <a href="#">Agriculture</a>
+                        <a href="#">Banking</a>
+                        <a href="#">Transport</a>
+                        <a href="#">Fibre Processing & Manufacturing</a>
+                        <a href="#">Information Technology Systems</a>
+                        <a href="#">Education & Training</a>
+                        <a href="#">Cooking & Hospitality</a>
+                        <a href="#">Local Government</a>
+                    </div>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#book" class="btn">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>RE-ENGINEER YOUR CRAFT</h1>
+            <h2>Insika Foundation Training Academy</h2>
+            <p>Skills development to improve your employability</p>
+            <a href="#courses" class="btn">View All Courses</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Get Industry Relevant Training</h3>
+                <p>We remain committed to develop, uplift, and inspire high quality skills much needed within our economic workforce.</p>
+                <a href="#" class="btn">Start Now!</a>
+            </div>
+            <div class="feature-card">
+                <h3>Go at Your Own Pace</h3>
+                <p>Our concept and philosophy of learning is that individuals should be able to self-direct their own learning at their own pace as Adult Learners.</p>
+                <a href="#" class="btn">Start Now!</a>
+            </div>
+            <div class="feature-card">
+                <h3>Hybrid Learning</h3>
+                <p>We offer contact learning as well as virtual training which upon completion will be assessed and moderated by trained industry experts.</p>
+                <a href="#" class="btn">Start Now!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <h2>Our Training Courses</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <h3>Agriculture</h3>
+            </div>
+            <div class="course-card">
+                <h3>Banking</h3>
+            </div>
+            <div class="course-card">
+                <h3>Information Technology Systems</h3>
+            </div>
+            <div class="course-card">
+                <h3>Cooking & Hospitality</h3>
+            </div>
+            <div class="course-card">
+                <h3>Fibre Processing & Manufacturing</h3>
+            </div>
+            <div class="course-card">
+                <h3>Local Government</h3>
+            </div>
+            <div class="course-card">
+                <h3>Education & Training</h3>
+            </div>
+            <div class="course-card">
+                <h3>Transportation</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>4,225</h3>
+                <p>Finished Sessions</p>
+            </div>
+            <div class="stat-item">
+                <h3>300</h3>
+                <p>Enrolled Learners</p>
+            </div>
+            <div class="stat-item">
+                <h3>287</h3>
+                <p>Number of Instructors</p>
+            </div>
+            <div class="stat-item">
+                <h3>98%</h3>
+                <p>Satisfaction Rate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonial-slider">
+            <div class="testimonial">
+                <p>"The training was really good and helpful towards helping us in getting certificates. At the training we received lunch and transport money to attend training. The facilitator helped us to finish the work in time."</p>
+                <h4>- Ganean Steve</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Insika Foundation Training Academy</h3>
+                <p>A branch of Insika Foundation NPC focusing on skills development and professional growth.</p>
+            </div>
+            <div>
+                <h3>Contact Us</h3>
+                <p>Elethu House, Building 23 Thornhill Office Park</p>
+                <p>94 Bekker Road Midrand 1686</p>
+                <p>011 695 6800</p>
+                <p>info@insikafoundation.co.za</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <p><a href="#">Privacy Policy</a></p>
+                <p><a href="#">Terms & Conditions</a></p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <p>2024 Insika Foundation Training Academy website is Proudly Crafted by Nova Codings</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple testimonial slider
+        const testimonials = [
+            {
+                text: "The training was really good and helpful towards helping us in getting certificates. At the training we received lunch and transport money to attend training. The facilitator helped us to finish the work in time.",
+                author: "Ganean Steve"
+            },
+            {
+                text: "I really enjoyed the store keeper training because i met other store keepers from different sites in the Western Cape , as a new store keeper it helped me a lot going forward.",
+                author: "Roseline Ngesi"
+            },
+            {
+                text: "Igama Nokukhanya Ngubane ngsebenza kaInsika eMkhambathini, ngithanda ukbonga uInsika Foundation nge training owangipha yona yoku manage finances for new venture.",
+                author: "Nokukhanya Ngubane"
+            },
+            {
+                text: "Igama ngu Nobuhle Shelembe ngsebenza kwaInsika eMkhambathini. Ngyabonga kakhulu kuInsika Foundation ngama training osipha wona kumanje sengiyakwazi ukubhaka izinhlobo ezihlukene zamakhekhe.",
+                author: "Nobuhle Shelembe"
+            }
+        ];
+
+        let currentTestimonial = 0;
+        const testimonialElement = document.querySelector('.testimonial');
+
+        function updateTestimonial() {
+            const testimonial = testimonials[currentTestimonial];
+            testimonialElement.innerHTML = `
+                <p>"${testimonial.text}"</p>
+                <h4>- ${testimonial.author}</h4>
+            `;
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        }
+
+        setInterval(updateTestimonial, 5000);
+    </script>
+</body>
+</html>

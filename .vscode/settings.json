@@ -43,6 +43,10 @@
         "Zamani",
         "Ziphozethu"
     ],
+<<<<<<< HEAD
     "files.autoSave": "onFocusChange",
     "git.ignoreLimitWarning": true
+=======
+    "liveServer.settings.port": 5501
+>>>>>>> 7f55347033e2a9b041257659859d2fd888415a52
 }
