@@ -38,8 +38,11 @@
         "Thornhill",
         "trainig",
         "transformative",
+        "transportaion",
         "VANCACIES",
         "Zamani",
         "Ziphozethu"
-    ]
+    ],
+    "files.autoSave": "onFocusChange",
+    "git.ignoreLimitWarning": true
 }

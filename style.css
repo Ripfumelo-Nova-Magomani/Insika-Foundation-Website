@@ -21,6 +21,7 @@ body {
     height: 50px;
     background-color: #df8207;
     color: #000000;
+    border: 1px solid #000000;
     border-radius: 50%;
     text-align: center;
     line-height: 50px;
@@ -137,14 +138,14 @@ nav ul li a:hover::before {
 .donate-btn {
     background-color: transparent;
     color: #df8207;
-    border: 2px solid #dbdad8;
+    border: 2px solid #df8207;  /* Changed to match text color */
     padding: 0.5rem 1.5rem;
     border-radius: 51px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
-    position: relative; /* Allows fine-tuning of its position */
-    top: -45px; /* Move the button up by 10px (adjust value as needed) */
+    position: relative;
+    top: -45px;
 }
 
 .donate-btn:hover {
@@ -1021,12 +1022,12 @@ h2 {
 
 /* Volunteer Section Styles */
 #volunteer {
-    background-image: url('img/volunteer.jpg');
+    background-image: url('img/volunteers1.png');
     background-size: cover;
     background-position: center;
     padding: 10rem;
     text-align: center;
-    color: white;
+    color: rgb(85, 84, 84);
 }
 
 .volunteer-content {
@@ -1199,7 +1200,7 @@ h2 {
     margin-top: 70px;
     background-color: transparent; /* Transparent background */
     color: #df8207; /* Update text color to contrast with the transparent background */
-    border: 1px solid black; /* Black border with 1px thickness */
+    border: 1px solid #df8207; /* Black border with 1px thickness */
     padding: 10px 20px;
     border-radius: 20px; /* Rounded corners */
     cursor: pointer;
